@@ -1,4 +1,3 @@
 # Parkable
-Team Parkable Web App
 
-Matt, Haley, Myles, Brandon, Travis, Christa, Gabe
+Parking Sensor Web Application designed during Digital Sciences Capstone Course at Kent State University

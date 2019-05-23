@@ -14,14 +14,6 @@
 
           // Function invoked by button click
           function start() {
-            //No img = https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Orange_circle_100%25.svg/768px-Orange_circle_100%25.svg.png
-            //Yes img =
-            const proxyurl = "https://cors-anywhere.herokuapp.com/";
-            const url = "www.kentparkable.com.s3-website.us-east-2.amazonaws.com"; // site that doesn’t send Access-Control-*
-            fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-            .then(response => response.text())
-            //.then(contents => console.log(contents))
-            .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
               AWS.config.update({
                 accessKeyId: 'AKIAS73H6AR74JWXBUN7',

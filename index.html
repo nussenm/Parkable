@@ -1,21 +1,291 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Kent Parkable</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.438.0.min.js"></script>
 
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+  <script type="text/javascript">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+          // Function invoked by button click
+          function speakText() {
+            //No img = https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Orange_circle_100%25.svg/768px-Orange_circle_100%25.svg.png
+            //Yes img =
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            const url = "www.kentparkable.com.s3-website.us-east-2.amazonaws.com"; // site that doesn’t send Access-Control-*
+            fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+            .then(response => response.text())
+            //.then(contents => console.log(contents))
+            .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
+              AWS.config.update({
+                accessKeyId: 'AKIAS73H6AR74JWXBUN7',
+                secretAccessKey: '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',
+                region: 'us-east-2'
+              });
+
+              //GET THE FILE FROM THE BUCKET
+
+                let s3 = new AWS.S3();
+                let params = {
+                Bucket: "www.kentparkable.com",
+                Key: "pi_1_status.txt",
+                Range: "bytes=0-9"
+               };
+               s3.getObject(params, function(err, data) {
+                 if (err) console.log(err, err.stack); // an error occurred
+                 else     console.log(data.Body.toString());           // successful response
+
+                 let stat = data.Body.toString();
+                 if (stat == "YES"){
+                   let image = document.getElementById('1');
+                   image.src = "X.png";
+                   oneText.innerText = "Unavailable";
+
+                 }else{
+                   let image = document.getElementById('1');
+                   image.src = "O.png";
+                   oneText.innerText = "Available";
+                 }
+             });
+
+
+        }
+      </script>
+      <script type="text/javascript">
+
+              // Function invoked by button click
+              function two() {
+                //No img = https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Orange_circle_100%25.svg/768px-Orange_circle_100%25.svg.png
+                //Yes img =
+                const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                const url = "www.kentparkable.com.s3-website.us-east-2.amazonaws.com"; // site that doesn’t send Access-Control-*
+                fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+                .then(response => response.text())
+                //.then(contents => console.log(contents))
+                .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+
+                  AWS.config.update({
+                    accessKeyId: 'AKIAS73H6AR74JWXBUN7',
+                    secretAccessKey: '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',
+                    region: 'us-east-2'
+                  });
+
+                  //GET THE FILE FROM THE BUCKET
+
+                    let s3 = new AWS.S3();
+                    let params = {
+                    Bucket: "www.kentparkable.com",
+                    Key: "pi_2_status.txt",
+                    Range: "bytes=0-9"
+                   };
+                   s3.getObject(params, function(err, data) {
+                     if (err) console.log(err, err.stack); // an error occurred
+                     else     console.log(data.Body.toString());           // successful response
+
+                     let stat = data.Body.toString();
+                     if (stat == "YES"){
+                       let image = document.getElementById('2');
+                       image.src = "X.png";
+                       twoText.innerText = "Unavailable";
+
+                     }else{
+                       let image = document.getElementById('2');
+                       image.src = "O.png";
+                       twoText.innerText = "Available";
+                     }
+                 });
+
+
+            }
+          </script>
+          <script type="text/javascript">
+
+                  // Function invoked by button click
+                  function three() {
+                    //No img = https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Orange_circle_100%25.svg/768px-Orange_circle_100%25.svg.png
+                    //Yes img =
+                    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                    const url = "www.kentparkable.com.s3-website.us-east-2.amazonaws.com"; // site that doesn’t send Access-Control-*
+                    fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+                    .then(response => response.text())
+                    //.then(contents => console.log(contents))
+                    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+
+                      AWS.config.update({
+                        accessKeyId: 'AKIAS73H6AR74JWXBUN7',
+                        secretAccessKey: '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',
+                        region: 'us-east-2'
+                      });
+
+                      //GET THE FILE FROM THE BUCKET
+
+                        let s3 = new AWS.S3();
+                        let params = {
+                        Bucket: "www.kentparkable.com",
+                        Key: "pi_3_status.txt",
+                        Range: "bytes=0-9"
+                       };
+                       s3.getObject(params, function(err, data) {
+                         if (err) console.log(err, err.stack); // an error occurred
+                         else     console.log(data.Body.toString());           // successful response
+
+                         let stat = data.Body.toString();
+                         if (stat == "YES"){
+                           let image = document.getElementById('3');
+                           image.src = "X.png";
+                           threeText.innerText = "Unavailable";
+
+                         }else{
+                           let image = document.getElementById('3');
+                           image.src = "O.png";
+                           threeText.innerText = "Available";
+                         }
+                     });
+
+
+                }
+              </script>
+              <script type="text/javascript">
+
+                      // Function invoked by button click
+                      function four() {
+                        //No img = https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Orange_circle_100%25.svg/768px-Orange_circle_100%25.svg.png
+                        //Yes img =
+                        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                        const url = "www.kentparkable.com.s3-website.us-east-2.amazonaws.com"; // site that doesn’t send Access-Control-*
+                        fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+                        .then(response => response.text())
+                        //.then(contents => console.log(contents))
+                        .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+
+                          AWS.config.update({
+                            accessKeyId: 'AKIAS73H6AR74JWXBUN7',
+                            secretAccessKey: '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',
+                            region: 'us-east-2'
+                          });
+
+                          //GET THE FILE FROM THE BUCKET
+
+                            let s3 = new AWS.S3();
+                            let params = {
+                            Bucket: "www.kentparkable.com",
+                            Key: "pi_4_status.txt",
+                            Range: "bytes=0-9"
+                           };
+                           s3.getObject(params, function(err, data) {
+                             if (err) console.log(err, err.stack); // an error occurred
+                             else     console.log(data.Body.toString());           // successful response
+
+                             let stat = data.Body.toString();
+                             if (stat == "YES"){
+                               let image = document.getElementById('4');
+                               image.src = "X.png";
+                               fourText.innerText = "Unavailable";
+
+                             }else{
+                               let image = document.getElementById('4');
+                               image.src = "O.png";
+                               fourText.innerText = "Available";
+                             }
+                         });
+
+
+                    }
+                  </script>
+                  <script type="text/javascript">
+
+                          function start() {
+                            speakText();
+                            two();
+                            three();
+                            four();
+                          }
+
+                      </script>
+
+
+  <style>
+  </style>
 </head>
+<body onload="start()">
 
-<body>
+<div class="jumbotron">
+  <div class="container text-left">
+    <h1>Kent Parkable</h1>
+    <p>Library Handicapable Parking Availability</p>
+  </div>
+</div>
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Parking Areas</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3><strong>Parking Spot 1</strong></h3></div>
+        <div class="panel-body"><img id="1" src="" class="col-1" style="width:100%" alt="Responsive image"></div>
+        <div class="panel-footer"><h3 id ="oneText"><strong></strong></h3></div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3><strong>Parking Spot 2</strong></h3></div>
+        <div class="panel-body"><img id="2" src="" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><h3 id ="twoText"><strong></strong></h3></div>
+      </div>
+    </div>
+  </div>
+</div><br>
 
-  <script src="index.js"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3><strong>Parking Spot 3</strong></h3></div>
+        <div class="panel-body"><img id="3" src="" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><h3 id = "threeText"><strong></strong></h3></div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3><strong>Parking Spot 4</strong></h3></div>
+        <div class="panel-body"><img id="4" src="" class="col-1" style="width:100%" alt="Responsive image"></div>
+        <div class="panel-footer"><h3 id = "fourText"><strong></strong></h3></div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+<footer class="container-fluid text-center">
+  <p>Contacts</p>
+    <p>Phone: 330-672-0000</p>
+    <p>Email Address: KentParkable@kent.edu</p>
+
+</footer>
+
 </body>
 </html>

@@ -6,6 +6,9 @@ Code for Parking Sensor Web Application designed during Digital Sciences Capston
 **Disclaimer:** This project is intended to be hosted in an AWS S3 Bucket for Static Web Hosting. Functions used rely on rooted device code, AWS IoT Rules, AWS IoT Shadow States, and S3 bucket permissions for creating files.
 
 ## Structure and Function
-
+### Application Data Flow
+* The Application works by running script.py on the device (A Raspberry Pi Ultrasonic Sensor), updating the devices JSON Shadow in AWS to a 'YES' or 'NO' value, triggers an IoT Rule to update a .txt file in S3 containing the value, and running the script in index.html on page load to retrieve the value and update the image / text value accordingly.
 ### Index.html
-* Index.html serves as the
+* Contains html for the static web page and the main javascript start() function to be ran on load. The function retrieves the necessary text file, located in S3, that holds the value updated by the device python script.
+### Script.py
+* This is the rooted Device script to be ran on the Raspberry Pi on device boot. This script gets a distance, determines whether the object is a car (within X distance) and updates it's shadow in AWS accordingly.

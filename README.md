@@ -9,7 +9,7 @@ Code for Parking Sensor Web Application designed during Digital Sciences Capston
 
 ## Structure and Function
 ### Application Data Flow
-* The Application works by running script.py on the device (A Raspberry Pi Ultrasonic Sensor), updating the devices JSON Shadow in AWS to a 'YES' or 'NO' value, triggers an IoT Rule to update a .txt file in S3 containing the value, and running the script in index.html on page load to retrieve the value and update the image / text value accordingly.
+* The Application works by running script.py on the device (A Raspberry Pi Ultrasonic Sensor). It then updates the devices JSON Shadow in AWS to a 'YES' or 'NO' value, triggers an IoT Rule to update a .txt file in S3 containing the value, and runs the script in index.html on page load to retrieve the value and update the image / text value accordingly.
 ### Index.html
 * Contains html for the static web page and the main javascript start() function to be ran on load. The function retrieves the necessary text file, located in S3, that holds the value updated by the device python script.
 ### Script.py

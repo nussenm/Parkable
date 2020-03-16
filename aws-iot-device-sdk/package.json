@@ -33,7 +33,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "crypto-js": "3.1.6",
-    "minimist": "1.2.0",
+    "minimist": "1.2.5",
     "mqtt": "2.15.1",
     "websocket-stream": "^5.0.1"
   },
